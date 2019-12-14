@@ -8,11 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonSearchFormComponent } from './pokemon-search-form/pokemon-search-form.component';
+import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonSearchFormComponent,
+    PokemonDetailsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
