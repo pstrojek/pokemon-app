@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './types/pokemon';
 
@@ -8,12 +10,20 @@ import { Pokemon } from './types/pokemon';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'pokemon-app';
+  title = 'Pokemon app';
+  pokemonForm = new FormGroup({
+    id: new FormControl('', [
+      Validators.required
+    ])
+  });
 
   constructor(private pokemonService: PokemonService) {}
 
-  ngOnInit() {
-    this.pokemonService.getPokemon(1).subscribe((pokemon: Pokemon) => {
+  ngOnInit() {}
+
+  submitPokemon() {
+    const pokemonId = this.pokemonForm.value.id;
+    this.pokemonService.getPokemon(pokemonId).subscribe((pokemon: Pokemon) => {
       console.log(pokemon.name);
     });
   }

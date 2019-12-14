@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Pokemon } from '../types/pokemon';
 
 const BASE_URL = 'https://pokeapi.co/api/v2/';
