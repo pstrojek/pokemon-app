@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { MatPaginator } from '@angular/material';
 import { of as observableOf } from 'rxjs';
 import { startWith, switchMap, map, catchError } from 'rxjs/operators';
@@ -16,6 +16,7 @@ export class PokemonListComponent implements AfterViewInit {
   tableData: PokemonList['results'];
   pageSize = 10;
   resultsLength = 0;
+  maxPagesLimit = 10;
   isLoadingResults = true;
   isApiUnavailable = false;
 
@@ -35,7 +36,7 @@ export class PokemonListComponent implements AfterViewInit {
         map(data => {
           this.isLoadingResults = false;
           this.isApiUnavailable = false;
-          this.resultsLength = data.count;
+          this.resultsLength = getMaximumDataCount(data.count, this.maxPagesLimit, this.pageSize);
 
           return data.results;
         }),
@@ -45,5 +46,24 @@ export class PokemonListComponent implements AfterViewInit {
           return observableOf([]);
         })
       ).subscribe(data => this.tableData = data);
+  }
+
+  @HostListener('window:keydown.arrowright', ['$event'])
+  nextPaginationPage() {
+    this.paginator.nextPage();
+  }
+
+  @HostListener('window:keydown.arrowleft', ['$event'])
+  previousPaginationPage() {
+    this.paginator.previousPage();
+  }
+}
+
+function getMaximumDataCount(dataCount: number, maxPagesLimit: number, pageSize: number): number {
+  const maxDataCountSize = maxPagesLimit * pageSize;
+  if (dataCount < maxDataCountSize) {
+    return dataCount;
+  } else {
+    return maxDataCountSize;
   }
 }
