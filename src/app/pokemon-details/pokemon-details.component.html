@@ -8,3 +8,15 @@
     <div>Effort: {{ item.effort }}</div>
   </div>
 </div>
+<button
+  (click)="previousPokemon()"
+  mat-raised-button
+  color="primary"
+  [disabled]="currentPokemonId === 1"
+>Previous Pokemon</button>
+<button
+  (click)="nextPokemon()"
+  mat-raised-button
+  color="primary"
+  class="next-button"
+>Next Pokemon</button>
