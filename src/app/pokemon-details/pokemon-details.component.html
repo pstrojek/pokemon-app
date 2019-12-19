@@ -1,4 +1,10 @@
-<p>pokemon-details works!</p>
+<h1>Pokemon details</h1>
 <div *ngIf="pokemon$ | async as pokemon">
-  {{ pokemon.name }}
+  <div class="pokemon-name">Name: {{ pokemon.name }}</div>
+  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+  <div *ngFor="let item of pokemon.stats" class="stat">
+    <div class="stat-name">{{ item.stat.name }} </div>
+    <div>Base stat: {{ item.base_stat }}</div>
+    <div>Effort: {{ item.effort }}</div>
+  </div>
 </div>

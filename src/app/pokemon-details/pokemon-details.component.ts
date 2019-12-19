@@ -16,7 +16,6 @@ export class PokemonDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private pokemonService: PokemonService
   ) {}
 
@@ -26,9 +25,4 @@ export class PokemonDetailsComponent implements OnInit {
         this.pokemonService.getPokemon(Number(params.get('id'))))
     );
   }
-
-  goHome() {
-    this.router.navigate(['/home']);
-  }
-
 }
