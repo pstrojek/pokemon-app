@@ -59,7 +59,7 @@ export class PokemonListComponent implements AfterViewInit {
   }
 }
 
-function getCappedDataCount(dataCount: number, maxPagesLimit: number, pageSize: number): number {
+export function getCappedDataCount(dataCount: number, maxPagesLimit: number, pageSize: number): number {
   const maxDataCountSize = maxPagesLimit * pageSize;
   if (dataCount < maxDataCountSize) {
     return dataCount;
