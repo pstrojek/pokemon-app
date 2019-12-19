@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9dba7656-e53d-46c9-9285-ba5d60f123ad/deploy-status)](https://app.netlify.com/sites/compassionate-hugle-13ac63/deploys)
 
 # Pokemon App
-Simple app that let you browse Pokemons list and find a Pokemon by id. Under the hood it use a PokeApi from https://pokeapi.co/
+Simple app that let you browse Pokemon list and find a Pokemon by id. Under the hood it uses a PokeApi from https://pokeapi.co/
 
 ## Demo
 You can see the demo version here:  
