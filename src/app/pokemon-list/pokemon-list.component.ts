@@ -16,9 +16,9 @@ export class PokemonListComponent implements AfterViewInit {
   tableData: PokemonList['results'];
   pageSize = 10;
   resultsLength = 0;
-  maxPagesLimit = 10;
   isLoadingResults = true;
   isApiUnavailable = false;
+  private maxPagesLimit = 10;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
@@ -36,7 +36,7 @@ export class PokemonListComponent implements AfterViewInit {
         map(data => {
           this.isLoadingResults = false;
           this.isApiUnavailable = false;
-          this.resultsLength = getMaximumDataCount(data.count, this.maxPagesLimit, this.pageSize);
+          this.resultsLength = getCappedDataCount(data.count, this.maxPagesLimit, this.pageSize);
 
           return data.results;
         }),
@@ -59,7 +59,7 @@ export class PokemonListComponent implements AfterViewInit {
   }
 }
 
-function getMaximumDataCount(dataCount: number, maxPagesLimit: number, pageSize: number): number {
+function getCappedDataCount(dataCount: number, maxPagesLimit: number, pageSize: number): number {
   const maxDataCountSize = maxPagesLimit * pageSize;
   if (dataCount < maxDataCountSize) {
     return dataCount;
