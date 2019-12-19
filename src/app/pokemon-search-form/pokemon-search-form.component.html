@@ -3,5 +3,11 @@
     <input type="number" matInput placeholder="Pokemon id" formControlName="id">
   </mat-form-field>
 
-  <button type="submit" mat-raised-button color="primary" [disabled]="!pokemonForm.valid">Submit</button>
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    class="find-button"
+    [disabled]="!pokemonForm.valid"
+  >Find</button>
 </form>
