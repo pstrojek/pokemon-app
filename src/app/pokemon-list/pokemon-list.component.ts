@@ -48,12 +48,12 @@ export class PokemonListComponent implements AfterViewInit {
       ).subscribe(data => this.tableData = data);
   }
 
-  @HostListener('window:keydown.arrowright', ['$event'])
+  @HostListener('window:keydown.arrowright')
   nextPaginationPage() {
     this.paginator.nextPage();
   }
 
-  @HostListener('window:keydown.arrowleft', ['$event'])
+  @HostListener('window:keydown.arrowleft')
   previousPaginationPage() {
     this.paginator.previousPage();
   }

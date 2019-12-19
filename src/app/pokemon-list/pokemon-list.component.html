@@ -1,6 +1,5 @@
 <div class="simple-table-container mat-elevation-z8">
-  <div class="loading-shade"
-       *ngIf="isLoadingResults || isApiUnavailable">
+  <div *ngIf="isLoadingResults || isApiUnavailable" class="loading-shade">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     <div *ngIf="isApiUnavailable">
       PokeApi is unavailable right now. Please try in few minutes.
