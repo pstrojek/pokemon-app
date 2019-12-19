@@ -1,0 +1,23 @@
+<div class="simple-table-container mat-elevation-z8">
+  <div class="loading-shade"
+       *ngIf="isLoadingResults || isApiUnavailable">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div *ngIf="isApiUnavailable">
+      PokeApi is unavailable right now. Please try in few minutes.
+    </div>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="tableData" class="pokemon-table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+</div>
